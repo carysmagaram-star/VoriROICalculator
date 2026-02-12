@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoriOS ROI Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vori-green: #7C3AED;
+    --vori-green-dark: #6D28D9;
+    --vori-green-light: #EDE9FE;
+    --vori-navy: #09090B;
+    --vori-navy-mid: #18181B;
+    --vori-navy-light: #27272A;
+    --vori-slate: #A1A1AA;
+    --vori-white: #FAFAFA;
+    --vori-gold: #E9D5FF;
+    --vori-red: #FF5252;
+    --vori-cyan: #C4B5FD;
+    --card-bg: rgba(24, 24, 27, 0.8);
+    --card-border: rgba(124, 58, 237, 0.2);
+    --input-bg: rgba(9, 9, 11, 0.8);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--vori-navy);
+    color: var(--vori-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(196,181,253,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(124,58,237,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .app-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  .header {
+    padding: 40px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    background: var(--vori-green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--vori-navy);
+    box-shadow: 0 0 24px rgba(124,58,237,0.3);
+  }
+
+  .logo-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text span { color: var(--vori-green); }
+
+  .header-subtitle {
+    font-size: 14px;
+    color: var(--vori-slate);
+    font-weight: 400;
+  }
+
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 40px 0 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 .green { color: var(--vori-green); }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--vori-slate);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Money Clock */
+  .money-clock {
+    background: linear-gradient(135deg, var(--vori-navy-mid), var(--vori-navy-light));
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .money-clock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .clock-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--vori-green);
+    font-weight: 600;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .clock-value {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 700;
+    color: var(--vori-white);
+    position: relative;
+    line-height: 1.2;
+  }
+
+  .clock-value .dollar { color: var(--vori-green); }
+
+  .clock-sub {
+    font-size: 15px;
+    color: var(--vori-slate);
+    margin-top: 8px;
+    position: relative;
+  }
+
+  .clock-sub strong { color: var(--vori-white); }
+
+  .clock-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .clock-stat {
+    text-align: center;
+  }
+
+  .clock-stat-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--vori-cyan);
+  }
+
+  .clock-stat-label {
+    font-size: 12px;
+    color: var(--vori-slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    width: 32px;
+    height: 32px;
+    background: var(--vori-green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--vori-navy);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  /* Input Cards */
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .input-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .input-card:hover {
+    border-color: rgba(124,58,237,0.35);
+    box-shadow: 0 4px 20px rgba(124,58,237,0.08);
+  }
+
+  .input-label {
+    font-size: 13px;
+    color: var(--vori-slate);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .input-label .icon {
+    font-size: 15px;
+  }
+
+  .input-wrapper {
+    position: relative;
+  }
+
+  .input-prefix {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    color: var(--vori-green);
+    font-weight: 700;
+  }
+
+  .input-suffix {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--vori-slate);
+  }
+
+  input[type="text"], input[type="number"], select {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid rgba(139,155,180,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    color: var(--vori-white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus {
+    border-color: var(--vori-green);
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+  }
+
+  input.has-prefix { padding-left: 32px; }
+  input.has-suffix { padding-right: 60px; }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%238B9BB4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  select option {
+    background: var(--vori-navy);
+    color: var(--vori-white);
+  }
+
+  /* ROI Results */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .result-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124,58,237,0.12);
+  }
+
+  .result-card.featured {
+    border-color: var(--vori-green);
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.02));
+  }
+
+  .result-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .result-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--vori-white);
+    line-height: 1.2;
+  }
+
+  .result-value.green { color: var(--vori-green); }
+  .result-value.cyan { color: var(--vori-cyan); }
+  .result-value.gold { color: var(--vori-gold); }
+
+  .result-label {
+    font-size: 13px;
+    color: var(--vori-slate);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* Breakdown Table */
+  .breakdown-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .breakdown-table thead th {
+    background: rgba(124,58,237,0.08);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--vori-green);
+    font-weight: 600;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .breakdown-table thead th:last-child,
+  .breakdown-table thead th:nth-child(3),
+  .breakdown-table thead th:nth-child(4) {
+    text-align: right;
+  }
+
+  .breakdown-table tbody tr {
+    transition: background 0.15s;
+  }
+
+  .breakdown-table tbody tr:hover {
+    background: rgba(124,58,237,0.04);
+  }
+
+  .breakdown-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(139,155,180,0.08);
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  .breakdown-table tbody td:last-child,
+  .breakdown-table tbody td:nth-child(3),
+  .breakdown-table tbody td:nth-child(4) {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+  }
+
+  .breakdown-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .breakdown-table tbody tr.major td:first-child {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .breakdown-table tbody tr.major td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--vori-green);
+    border-radius: 2px;
+  }
+
+  .module-tag {
+    display: inline-block;
+    background: rgba(124,58,237,0.12);
+    color: var(--vori-green);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .benefit-desc {
+    color: var(--vori-slate);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* Totals row */
+  .breakdown-table tfoot td {
+    padding: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    border-top: 2px solid var(--vori-green);
+    background: rgba(124,58,237,0.06);
+  }
+
+  .breakdown-table tfoot td:last-child {
+    font-family: 'Space Mono', monospace;
+    text-align: right;
+    color: var(--vori-green);
+    font-size: 16px;
+  }
+
+  /* Business Case */
+  .biz-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .biz-case-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .biz-case-item .label {
+    font-size: 12px;
+    color: var(--vori-slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .biz-case-item .value {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  /* Comparison Bar */
+  .compare-section { margin-top: 40px; }
+
+  .compare-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .compare-name {
+    width: 120px;
+    font-size: 13px;
+    color: var(--vori-slate);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .compare-track {
+    flex: 1;
+    height: 32px;
+    background: rgba(139,155,180,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .compare-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: fit-content;
+    white-space: nowrap;
+  }
+
+  .compare-fill.vori {
+    background: linear-gradient(90deg, var(--vori-green-dark), var(--vori-green));
+    color: var(--vori-navy);
+  }
+
+  .compare-fill.other {
+    background: rgba(139,155,180,0.25);
+    color: var(--vori-slate);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 0 32px;
+    color: var(--vori-slate);
+    font-size: 13px;
+  }
+
+  .footer a {
+    color: var(--vori-green);
+    text-decoration: none;
+  }
+
+  /* CTA */
+  .cta-bar {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--vori-green);
+    color: var(--vori-navy);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    text-decoration: none;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124,58,237,0.4);
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+    margin: 40px 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .input-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .clock-row { gap: 20px; }
+    .breakdown-table { font-size: 13px; }
+    .compare-name { width: 80px; font-size: 11px; }
+    .header { padding: 24px 0 8px; }
+    .hero { padding: 24px 0 32px; }
+    .biz-case-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Slider Styles */
+  .slider-container {
+    margin-top: 8px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(139,155,180,0.2);
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--vori-green);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(124,58,237,0.4);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--vori-green);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(124,58,237,0.4);
+  }
+
+  .slider-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--vori-green);
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+
+  /* Toggle Pills */
+  .toggle-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-pill {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(139,155,180,0.2);
+    background: transparent;
+    color: var(--vori-slate);
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .toggle-pill.active {
+    background: var(--vori-green);
+    color: var(--vori-navy);
+    border-color: var(--vori-green);
+    font-weight: 600;
+  }
+
+  .toggle-pill:hover:not(.active) {
+    border-color: rgba(124,58,237,0.4);
+    color: var(--vori-white);
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    font-size: 11px;
+    color: var(--vori-slate);
+    opacity: 0.6;
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container" id="app"></div>
+
+<script>
+// ========== VORI ROI CALCULATOR ==========
+
+const app = document.getElementById('app');
+
+// State
+const state = {
+  companyName: '',
+  numLocations: 1,
+  annualVolume: 5000000,
+  lanes: 3,
+  hourlyWage: 23,
+  currentPOS: 'none',
+  desiredTags: 5000,
+  // Module toggles
+  loyalty: true,
+  inventory: true,
+  ordering: true,
+  smartPricing: true,
+  invoiceAudit: true,
+  eshelfTags: true,
+  // Impact percentages
+  loyaltyImpact: 5,
+  inventoryImpact: 1.25,
+  smartPricingImpact: 1.25,
+  // Labor hours
+  orderingHours: 6,
+  invoiceHours: 8,
+  tagHours: 2,
+  // Vori costs
+  softwarePerMonth: 1197,
+  eShelfPerMonth: 250,
+  hardwareOneTime: 6824,
+};
+
+function fmt(n) {
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(n);
+}
+
+function fmtDollar(n) {
+  if (Math.abs(n) >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return '$' + fmt(n);
+  return '$' + n.toFixed(0);
+}
+
+function calculate() {
+  const s = state;
+  const totalVolume = s.annualVolume * s.numLocations;
+  const weeklyWage = s.hourlyWage * 52;
+
+  // Module values
+  const loyaltyValue = s.loyalty ? totalVolume * (s.loyaltyImpact / 100) : 0;
+  const inventoryValue = s.inventory ? totalVolume * (s.inventoryImpact / 100) : 0;
+  const orderingValue = s.ordering ? (s.orderingHours * s.hourlyWage * 52 * s.numLocations) * 0.5 : 0;
+  const smartPricingMargin = s.smartPricing ? totalVolume * (s.smartPricingImpact / 100) : 0;
+  const invoiceLaborValue = s.invoiceAudit ? (s.invoiceHours * s.hourlyWage * 52 * s.numLocations) * 0.75 : 0;
+  const eShelfValue = s.eshelfTags ? (s.tagHours * s.hourlyWage * 52 * s.numLocations) * 0.5 : 0;
+
+  const totalValueAdded = loyaltyValue + inventoryValue + orderingValue + smartPricingMargin + invoiceLaborValue + eShelfValue;
+  const profitGrowthPct = totalVolume > 0 ? (totalValueAdded / totalVolume) * 100 : 0;
+
+  const annualSoftwareCost = s.softwarePerMonth * 12 * s.numLocations;
+  const annualEShelfCost = s.eshelfTags ? s.eShelfPerMonth * 12 * s.numLocations : 0;
+  const totalAnnualCost = annualSoftwareCost + annualEShelfCost;
+  const hardwareCost = s.hardwareOneTime * s.numLocations;
+
+  const netAnnualReturn = totalValueAdded - totalAnnualCost;
+  const paybackMonths = netAnnualReturn > 0 ? ((totalAnnualCost + hardwareCost) / netAnnualReturn) * 12 : 999;
+  const roiMultiple = (totalAnnualCost + hardwareCost) > 0 ? totalValueAdded / (totalAnnualCost + hardwareCost) : 0;
+
+  const dailyLost = totalValueAdded / 365;
+  const monthlyLost = totalValueAdded / 12;
+
+  return {
+    loyaltyValue, inventoryValue, orderingValue, smartPricingMargin,
+    invoiceLaborValue, eShelfValue, totalValueAdded, profitGrowthPct,
+    annualSoftwareCost, annualEShelfCost, totalAnnualCost, hardwareCost,
+    netAnnualReturn, paybackMonths, roiMultiple, dailyLost, monthlyLost,
+    totalVolume
+  };
+}
+
+function render() {
+  const r = calculate();
+  const name = state.companyName || 'Your Store';
+
+  app.innerHTML = `
+    <!-- Header -->
+    <header class="header animate-in">
+      <div class="logo-area">
+        <div class="logo-mark">V</div>
+        <div>
+          <div class="logo-text"><span>Vori</span>OS</div>
+          <div class="header-subtitle">ROI Calculator</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero animate-in delay-1">
+      <h1>See what <span class="green">Vori</span> can do<br>for your bottom line</h1>
+      <p>Enter your store details below and watch the numbers come to life. Every percentage point matters in grocery.</p>
+    </div>
+
+    <!-- Money Clock -->
+    <div class="money-clock animate-in delay-2">
+      <div class="clock-label pulse">⏱ Money Left on the Table</div>
+      <div class="clock-value"><span class="dollar">$</span>${fmt(Math.round(r.dailyLost))}</div>
+      <div class="clock-sub">in unrealized profit <strong>every single day</strong> for ${name}</div>
+      <div class="clock-row">
+        <div class="clock-stat">
+          <div class="clock-stat-value">${fmtDollar(r.monthlyLost)}</div>
+          <div class="clock-stat-label">Per Month</div>
+        </div>
+        <div class="clock-stat">
+          <div class="clock-stat-value">${fmtDollar(r.totalValueAdded)}</div>
+          <div class="clock-stat-label">Per Year</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Store Info -->
+    <div class="section animate-in delay-3">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">Store Information</div>
+      </div>
+      <div class="input-grid">
+        <div class="input-card">
+          <div class="input-label"><span class="icon">🏪</span> Company Name</div>
+          <input type="text" id="companyName" value="${state.companyName}" placeholder="e.g. Farewell Market" oninput="updateState('companyName', this.value)">
+        </div>
+        <div class="input-card">
+          <div class="input-label"><span class="icon">📍</span> Number of Locations</div>
+          <input type="number" id="numLocations" value="${state.numLocations}" min="1" max="500" oninput="updateState('numLocations', parseInt(this.value) || 1)">
+        </div>
+        <div class="input-card">
+          <div class="input-label"><span class="icon">💰</span> Avg. Annual Volume per Store</div>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="text" class="has-prefix" id="annualVolume" value="${fmt(state.annualVolume)}" oninput="updateDollar('annualVolume', this.value)">
+          </div>
+        </div>
+        <div class="input-card">
+          <div class="input-label"><span class="icon">🛒</span> Number of Lanes</div>
+          <input type="number" id="lanes" value="${state.lanes}" min="1" max="50" oninput="updateState('lanes', parseInt(this.value) || 1)">
+        </div>
+        <div class="input-card">
+          <div class="input-label"><span class="icon">👤</span> Avg. Hourly Wage</div>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="text" class="has-prefix has-suffix" id="hourlyWage" value="${state.hourlyWage}" oninput="updateState('hourlyWage', parseFloat(this.value) || 0)">
+            <span class="input-suffix">/hr</span>
+          </div>
+        </div>
+        <div class="input-card">
+          <div class="input-label"><span class="icon">🏷️</span> Desired # of E-Shelf Tags</div>
+          <input type="number" id="desiredTags" value="${state.desiredTags}" min="0" max="50000" step="500" oninput="updateState('desiredTags', parseInt(this.value) || 0)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Vori Modules -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">Vori Modules & Impact</div>
+      </div>
+
+      <!-- Module Cards -->
+      <div class="input-grid" style="margin-bottom: 20px;">
+        <!-- Loyalty -->
+        <div class="input-card" style="border-color: ${state.loyalty ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">❤️</span> Loyalty & Marketing</div>
+            <button class="toggle-pill ${state.loyalty ? 'active' : ''}" onclick="toggleModule('loyalty')">${state.loyalty ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Increased customer count, retention, basket size & walletshare</div>
+          ${state.loyalty ? `
+          <div class="slider-container">
+            <input type="range" min="1" max="10" step="0.5" value="${state.loyaltyImpact}" oninput="updateState('loyaltyImpact', parseFloat(this.value))">
+            <div class="slider-value">${state.loyaltyImpact}% of revenue → ${fmtDollar(r.loyaltyValue)}/yr</div>
+          </div>` : ''}
+        </div>
+
+        <!-- Inventory -->
+        <div class="input-card" style="border-color: ${state.inventory ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">📦</span> Inventory Management</div>
+            <button class="toggle-pill ${state.inventory ? 'active' : ''}" onclick="toggleModule('inventory')">${state.inventory ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Decreased shrink, reduced out-of-stocks, backdoor control</div>
+          ${state.inventory ? `
+          <div class="slider-container">
+            <input type="range" min="0.25" max="5" step="0.25" value="${state.inventoryImpact}" oninput="updateState('inventoryImpact', parseFloat(this.value))">
+            <div class="slider-value">${state.inventoryImpact}% of revenue → ${fmtDollar(r.inventoryValue)}/yr</div>
+          </div>` : ''}
+        </div>
+
+        <!-- Multi-vendor Ordering -->
+        <div class="input-card" style="border-color: ${state.ordering ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">📋</span> Multi-Vendor Ordering</div>
+            <button class="toggle-pill ${state.ordering ? 'active' : ''}" onclick="toggleModule('ordering')">${state.ordering ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Labor saved from writing orders across multiple platforms</div>
+          ${state.ordering ? `
+          <div class="slider-container">
+            <input type="range" min="1" max="20" step="1" value="${state.orderingHours}" oninput="updateState('orderingHours', parseFloat(this.value))">
+            <div class="slider-value">${state.orderingHours} hrs/wk saved → ${fmtDollar(r.orderingValue)}/yr</div>
+          </div>` : ''}
+        </div>
+
+        <!-- Smart Pricing - Margin -->
+        <div class="input-card" style="border-color: ${state.smartPricing ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">🎯</span> Smart Pricing (Margin)</div>
+            <button class="toggle-pill ${state.smartPricing ? 'active' : ''}" onclick="toggleModule('smartPricing')">${state.smartPricing ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Ensure cost changes don't erode your target retail margin</div>
+          ${state.smartPricing ? `
+          <div class="slider-container">
+            <input type="range" min="0.25" max="5" step="0.25" value="${state.smartPricingImpact}" oninput="updateState('smartPricingImpact', parseFloat(this.value))">
+            <div class="slider-value">${state.smartPricingImpact}% of revenue → ${fmtDollar(r.smartPricingMargin)}/yr</div>
+          </div>` : ''}
+        </div>
+
+        <!-- Smart Pricing - Invoice Audit -->
+        <div class="input-card" style="border-color: ${state.invoiceAudit ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">🔍</span> Invoice Audit (Labor)</div>
+            <button class="toggle-pill ${state.invoiceAudit ? 'active' : ''}" onclick="toggleModule('invoiceAudit')">${state.invoiceAudit ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Labor saved from manually auditing invoices</div>
+          ${state.invoiceAudit ? `
+          <div class="slider-container">
+            <input type="range" min="1" max="20" step="1" value="${state.invoiceHours}" oninput="updateState('invoiceHours', parseFloat(this.value))">
+            <div class="slider-value">${state.invoiceHours} hrs/wk saved → ${fmtDollar(r.invoiceLaborValue)}/yr</div>
+          </div>` : ''}
+        </div>
+
+        <!-- E-Shelf Tags -->
+        <div class="input-card" style="border-color: ${state.eshelfTags ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="input-label" style="margin:0"><span class="icon">🏷️</span> E-Shelf Tags</div>
+            <button class="toggle-pill ${state.eshelfTags ? 'active' : ''}" onclick="toggleModule('eshelfTags')">${state.eshelfTags ? 'ON' : 'OFF'}</button>
+          </div>
+          <div class="benefit-desc">Eliminate overtime labor for paper price tag updates</div>
+          ${state.eshelfTags ? `
+          <div class="slider-container">
+            <input type="range" min="1" max="10" step="1" value="${state.tagHours}" oninput="updateState('tagHours', parseFloat(this.value))">
+            <div class="slider-value">${state.tagHours} hrs/wk saved → ${fmtDollar(r.eShelfValue)}/yr</div>
+          </div>` : ''}
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 3: Results -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">Your ROI Breakdown</div>
+      </div>
+
+      <div class="results-grid" style="margin-bottom: 24px;">
+        <div class="result-card featured">
+          <div class="result-icon">💵</div>
+          <div class="result-value green">${fmtDollar(r.totalValueAdded)}</div>
+          <div class="result-label">Total Annual Value Added</div>
+        </div>
+        <div class="result-card">
+          <div class="result-icon">📈</div>
+          <div class="result-value cyan">${r.profitGrowthPct.toFixed(1)}%</div>
+          <div class="result-label">Profit Growth</div>
+        </div>
+        <div class="result-card">
+          <div class="result-icon">🚀</div>
+          <div class="result-value green">${fmtDollar(r.netAnnualReturn)}</div>
+          <div class="result-label">Net Annual Return</div>
+        </div>
+        <div class="result-card">
+          <div class="result-icon">⏱</div>
+          <div class="result-value gold">${r.paybackMonths < 1 ? '<1' : r.paybackMonths.toFixed(1)}</div>
+          <div class="result-label">Payback Period (Months)</div>
+        </div>
+      </div>
+
+      <!-- Detailed Breakdown Table -->
+      <table class="breakdown-table">
+        <thead>
+          <tr>
+            <th>Vori Module</th>
+            <th>Benefit</th>
+            <th>Basis</th>
+            <th>Est. Annual Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${state.loyalty ? `<tr class="major"><td><span class="module-tag">Loyalty</span><br>Loyalty & Marketing</td><td class="benefit-desc">Increased customer count, retention, basket size</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.loyaltyValue)}</td></tr>` : ''}
+          ${state.inventory ? `<tr class="major"><td><span class="module-tag">Inventory</span><br>Inventory Management</td><td class="benefit-desc">Decreased shrink, reduced out-of-stocks</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.inventoryValue)}</td></tr>` : ''}
+          ${state.ordering ? `<tr><td><span class="module-tag">Ordering</span><br>Multi-Vendor Ordering</td><td class="benefit-desc">Labor savings across platforms</td><td>${fmtDollar(state.orderingHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.orderingValue)}</td></tr>` : ''}
+          ${state.smartPricing ? `<tr class="major"><td><span class="module-tag">Pricing</span><br>Smart Pricing – Margin</td><td class="benefit-desc">Cost changes don't erode target margin</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.smartPricingMargin)}</td></tr>` : ''}
+          ${state.invoiceAudit ? `<tr><td><span class="module-tag">Pricing</span><br>Smart Pricing – Invoice Audit</td><td class="benefit-desc">Eliminate manual invoice reconciliation</td><td>${fmtDollar(state.invoiceHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.invoiceLaborValue)}</td></tr>` : ''}
+          ${state.eshelfTags ? `<tr><td><span class="module-tag">E-Shelf</span><br>Electronic Shelf Tags</td><td class="benefit-desc">Eliminate paper tag update labor</td><td>${fmtDollar(state.tagHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.eShelfValue)}</td></tr>` : ''}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total Annual Value</td>
+            <td>${fmtDollar(r.totalValueAdded)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-bar">
+      <a href="https://www.vori.com" target="_blank" class="cta-btn">
+        Get Started with Vori →
+      </a>
+    </div>
+
+    <div class="footer">
+      <p>Built with 💜 by <a href="https://www.vori.com" target="_blank">Vori</a> · The grocery operating system</p>
+    </div>
+  `;
+}
+
+function renderComparisonBars() {
+  const competitors = [
+    { name: 'Vori', annual: 24500, isVori: true },
+    { name: 'PC America', annual: 52412 },
+    { name: 'NCR ISS45', annual: 60565 },
+    { name: 'IT Retail', annual: 67492 },
+    { name: 'DUMAC', annual: 68079 },
+    { name: 'LOC', annual: 69145 },
+    { name: 'NCR Encor', annual: 80412 },
+    { name: 'ECRS', annual: 86426 },
+    { name: 'Revel', annual: 87145 },
+  ];
+
+  const max = Math.max(...competitors.map(c => c.annual));
+
+  return competitors.map(c => {
+    const pct = (c.annual / max * 100).toFixed(0);
+    return `
+      <div class="compare-bar">
+        <div class="compare-name" style="${c.isVori ? 'color:var(--vori-green);font-weight:700' : ''}">${c.name}</div>
+        <div class="compare-track">
+          <div class="compare-fill ${c.isVori ? 'vori' : 'other'}" style="width:${pct}%">
+            ${fmtDollar(c.annual)}/yr
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateState(key, value) {
+  state[key] = value;
+  render();
+  // Restore focus
+  const el = document.getElementById(key);
+  if (el) el.focus();
+}
+
+function updateDollar(key, rawValue) {
+  const num = parseInt(rawValue.replace(/[^0-9]/g, '')) || 0;
+  state[key] = num;
+  render();
+  const el = document.getElementById(key);
+  if (el) {
+    el.focus();
+    // Set cursor to end
+    const len = el.value.length;
+    el.setSelectionRange(len, len);
+  }
+}
+
+function toggleModule(key) {
+  state[key] = !state[key];
+  render();
+}
+
+// Initial render
+render();
+</script>
+</body>
+</html>
