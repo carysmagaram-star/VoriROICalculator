@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --vori-green: #7C3AED;
-    --vori-green-dark: #6D28D9;
+    --vori-green: #9B8AFB;
+    --vori-green-dark: #8B7BEB;
     --vori-green-light: #EDE9FE;
     --vori-navy: #09090B;
     --vori-navy-mid: #18181B;
@@ -39,9 +39,9 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 20% 20%, rgba(155,138,251,0.08) 0%, transparent 70%),
       radial-gradient(ellipse 40% 60% at 80% 80%, rgba(196,181,253,0.05) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(124,58,237,0.03) 0%, transparent 60%);
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(155,138,251,0.03) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -82,7 +82,7 @@
     font-weight: 700;
     font-size: 20px;
     color: var(--vori-navy);
-    box-shadow: 0 0 24px rgba(124,58,237,0.3);
+    box-shadow: 0 0 24px rgba(155,138,251,0.3);
   }
 
   .logo-text {
@@ -140,7 +140,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.1) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 0%, rgba(155,138,251,0.1) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -251,8 +251,8 @@
   }
 
   .input-card:hover {
-    border-color: rgba(124,58,237,0.35);
-    box-shadow: 0 4px 20px rgba(124,58,237,0.08);
+    border-color: rgba(155,138,251,0.35);
+    box-shadow: 0 4px 20px rgba(155,138,251,0.08);
   }
 
   .input-label {
@@ -308,7 +308,7 @@
 
   input:focus, select:focus {
     border-color: var(--vori-green);
-    box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    box-shadow: 0 0 0 3px rgba(155,138,251,0.15);
   }
 
   input.has-prefix { padding-left: 32px; }
@@ -346,12 +346,12 @@
 
   .result-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(124,58,237,0.12);
+    box-shadow: 0 8px 30px rgba(155,138,251,0.12);
   }
 
   .result-card.featured {
     border-color: var(--vori-green);
-    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.02));
+    background: linear-gradient(135deg, rgba(155,138,251,0.1), rgba(155,138,251,0.02));
   }
 
   .result-icon {
@@ -390,7 +390,7 @@
   }
 
   .breakdown-table thead th {
-    background: rgba(124,58,237,0.08);
+    background: rgba(155,138,251,0.08);
     padding: 14px 16px;
     text-align: left;
     font-size: 12px;
@@ -412,7 +412,7 @@
   }
 
   .breakdown-table tbody tr:hover {
-    background: rgba(124,58,237,0.04);
+    background: rgba(155,138,251,0.04);
   }
 
   .breakdown-table tbody td {
@@ -453,7 +453,7 @@
 
   .module-tag {
     display: inline-block;
-    background: rgba(124,58,237,0.12);
+    background: rgba(155,138,251,0.12);
     color: var(--vori-green);
     font-size: 11px;
     padding: 2px 8px;
@@ -474,7 +474,7 @@
     font-weight: 700;
     font-size: 15px;
     border-top: 2px solid var(--vori-green);
-    background: rgba(124,58,237,0.06);
+    background: rgba(155,138,251,0.06);
   }
 
   .breakdown-table tfoot td:last-child {
@@ -598,13 +598,13 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    box-shadow: 0 4px 20px rgba(155,138,251,0.3);
     text-decoration: none;
   }
 
   .cta-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(124,58,237,0.4);
+    box-shadow: 0 8px 30px rgba(155,138,251,0.4);
   }
 
   /* Divider */
@@ -649,7 +649,7 @@
     background: var(--vori-green);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(124,58,237,0.4);
+    box-shadow: 0 0 10px rgba(155,138,251,0.4);
   }
 
   input[type="range"]::-moz-range-thumb {
@@ -659,7 +659,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    box-shadow: 0 0 10px rgba(124,58,237,0.4);
+    box-shadow: 0 0 10px rgba(155,138,251,0.4);
   }
 
   .slider-value {
@@ -720,7 +720,7 @@
   }
 
   .toggle-pill:hover:not(.active) {
-    border-color: rgba(124,58,237,0.4);
+    border-color: rgba(155,138,251,0.4);
     color: var(--vori-white);
   }
 
@@ -740,11 +740,8 @@
 <div class="app-container" id="app"></div>
 
 <script>
-// ========== VORI ROI CALCULATOR ==========
-
 const app = document.getElementById('app');
 
-// State
 const state = {
   companyName: '',
   numLocations: 1,
@@ -753,25 +750,22 @@ const state = {
   hourlyWage: 23,
   currentPOS: 'none',
   desiredTags: 5000,
-  // Module toggles
   loyalty: true,
   inventory: true,
   ordering: true,
   smartPricing: true,
   invoiceAudit: true,
   eshelfTags: true,
-  // Impact percentages
   loyaltyImpact: 5,
   inventoryImpact: 1.25,
   smartPricingImpact: 1.25,
-  // Labor hours
   orderingHours: 6,
   invoiceHours: 8,
   tagHours: 2,
-  // Vori costs
-  softwarePerMonth: 1197,
+  upfrontCosts: 6824,
+  monthlyFee: 1197,
   eShelfPerMonth: 250,
-  hardwareOneTime: 6824,
+  financingTerm: 0,
 };
 
 function fmt(n) {
@@ -787,345 +781,208 @@ function fmtDollar(n) {
 function calculate() {
   const s = state;
   const totalVolume = s.annualVolume * s.numLocations;
-  const weeklyWage = s.hourlyWage * 52;
-
-  // Module values
   const loyaltyValue = s.loyalty ? totalVolume * (s.loyaltyImpact / 100) : 0;
   const inventoryValue = s.inventory ? totalVolume * (s.inventoryImpact / 100) : 0;
   const orderingValue = s.ordering ? (s.orderingHours * s.hourlyWage * 52 * s.numLocations) * 0.5 : 0;
   const smartPricingMargin = s.smartPricing ? totalVolume * (s.smartPricingImpact / 100) : 0;
   const invoiceLaborValue = s.invoiceAudit ? (s.invoiceHours * s.hourlyWage * 52 * s.numLocations) * 0.75 : 0;
   const eShelfValue = s.eshelfTags ? (s.tagHours * s.hourlyWage * 52 * s.numLocations) * 0.5 : 0;
-
   const totalValueAdded = loyaltyValue + inventoryValue + orderingValue + smartPricingMargin + invoiceLaborValue + eShelfValue;
   const profitGrowthPct = totalVolume > 0 ? (totalValueAdded / totalVolume) * 100 : 0;
-
-  const annualSoftwareCost = s.softwarePerMonth * 12 * s.numLocations;
+  const annualSoftwareCost = s.monthlyFee * 12 * s.numLocations;
   const annualEShelfCost = s.eshelfTags ? s.eShelfPerMonth * 12 * s.numLocations : 0;
-  const totalAnnualCost = annualSoftwareCost + annualEShelfCost;
-  const hardwareCost = s.hardwareOneTime * s.numLocations;
-
-  const netAnnualReturn = totalValueAdded - totalAnnualCost;
-  const paybackMonths = netAnnualReturn > 0 ? ((totalAnnualCost + hardwareCost) / netAnnualReturn) * 12 : 999;
-  const roiMultiple = (totalAnnualCost + hardwareCost) > 0 ? totalValueAdded / (totalAnnualCost + hardwareCost) : 0;
-
-  const dailyLost = totalValueAdded / 365;
-  const monthlyLost = totalValueAdded / 12;
-
+  const totalAnnualSoftware = annualSoftwareCost + annualEShelfCost;
+  const totalUpfront = s.upfrontCosts * s.numLocations;
+  const financingTerm = s.financingTerm;
+  const monthlyFinancing = financingTerm > 0 ? totalUpfront / financingTerm : 0;
+  const annualFinancing = monthlyFinancing * 12;
+  const financingYears = financingTerm > 0 ? financingTerm / 12 : 0;
+  let year1Cost, year2Cost;
+  if (financingTerm === 0) {
+    year1Cost = totalAnnualSoftware + totalUpfront;
+    year2Cost = totalAnnualSoftware;
+  } else {
+    const yr1Fin = Math.min(annualFinancing, totalUpfront);
+    year1Cost = totalAnnualSoftware + yr1Fin;
+    if (financingYears > 1) {
+      year2Cost = totalAnnualSoftware + Math.min(annualFinancing, totalUpfront - yr1Fin);
+    } else {
+      year2Cost = totalAnnualSoftware;
+    }
+  }
   return {
     loyaltyValue, inventoryValue, orderingValue, smartPricingMargin,
     invoiceLaborValue, eShelfValue, totalValueAdded, profitGrowthPct,
-    annualSoftwareCost, annualEShelfCost, totalAnnualCost, hardwareCost,
-    netAnnualReturn, paybackMonths, roiMultiple, dailyLost, monthlyLost,
-    totalVolume
+    totalAnnualSoftware, totalUpfront, year1Cost, year2Cost,
+    netReturnYear1: totalValueAdded - year1Cost,
+    netReturnYear2: totalValueAdded - year2Cost,
+    paybackMonths: totalValueAdded > 0 ? (year1Cost / totalValueAdded) * 12 : 999,
+    dailyLost: totalValueAdded / 365,
+    monthlyLost: totalValueAdded / 12,
+    totalVolume, monthlyFinancing, annualFinancing
   };
 }
 
-function render() {
+// Only update text outputs — never touch input elements
+function updateOutputs() {
   const r = calculate();
   const name = state.companyName || 'Your Store';
+  const t = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  const h = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
+
+  h('clock-daily', '<span class="dollar">$</span>' + fmt(Math.round(r.dailyLost)));
+  h('clock-name', 'in unrealized profit <strong>every single day</strong> for ' + name);
+  t('clock-monthly', fmtDollar(r.monthlyLost));
+  t('clock-yearly', fmtDollar(r.totalValueAdded));
+  t('annual-fee-display', '= ' + fmtDollar(state.monthlyFee * 12 * state.numLocations) + '/yr' + (state.numLocations > 1 ? ' (all locations)' : ''));
+
+  const fi = document.getElementById('financing-info');
+  if (fi) {
+    if (state.financingTerm > 0) {
+      const totalMonthlyPayment = r.monthlyFinancing + (state.monthlyFee * state.numLocations) + (state.eshelfTags ? state.eShelfPerMonth * state.numLocations : 0);
+      const totalContractCost = totalMonthlyPayment * state.financingTerm;
+      fi.innerHTML = fmtDollar(r.totalUpfront) + ' financed over ' + state.financingTerm + ' months = <strong style="color:var(--vori-green)">' + fmtDollar(r.monthlyFinancing) + '/mo</strong>'
+        + '<br>Total monthly payment (financing + software): <strong style="color:var(--vori-green)">' + fmtDollar(totalMonthlyPayment) + '/mo</strong>'
+        + '<br>Total ' + state.financingTerm + '-month contract cost: <strong style="color:var(--vori-green)">' + fmtDollar(totalContractCost) + '</strong>';
+      fi.style.display = 'block';
+    } else { fi.style.display = 'none'; }
+  }
+
+  t('loyalty-sv', state.loyaltyImpact + '% of revenue \u2192 ' + fmtDollar(r.loyaltyValue) + '/yr');
+  t('inventory-sv', state.inventoryImpact + '% of revenue \u2192 ' + fmtDollar(r.inventoryValue) + '/yr');
+  t('ordering-sv', state.orderingHours + ' hrs/wk saved \u2192 ' + fmtDollar(r.orderingValue) + '/yr');
+  t('smartpricing-sv', state.smartPricingImpact + '% of revenue \u2192 ' + fmtDollar(r.smartPricingMargin) + '/yr');
+  t('invoice-sv', state.invoiceHours + ' hrs/wk saved \u2192 ' + fmtDollar(r.invoiceLaborValue) + '/yr');
+  t('eshelf-sv', state.tagHours + ' hrs/wk saved \u2192 ' + fmtDollar(r.eShelfValue) + '/yr');
+
+  t('res-total-value', fmtDollar(r.totalValueAdded));
+  t('res-profit-growth', r.profitGrowthPct.toFixed(1) + '%');
+  t('res-year1', fmtDollar(r.netReturnYear1));
+  t('res-year2', fmtDollar(r.netReturnYear2));
+  t('res-payback', r.paybackMonths < 1 ? '<1' : r.paybackMonths.toFixed(1));
+
+  t('tbl-loy-b', fmtDollar(r.totalVolume)); t('tbl-loy-v', fmtDollar(r.loyaltyValue));
+  t('tbl-inv-b', fmtDollar(r.totalVolume)); t('tbl-inv-v', fmtDollar(r.inventoryValue));
+  t('tbl-ord-b', fmtDollar(state.orderingHours * state.hourlyWage * 52 * state.numLocations)); t('tbl-ord-v', fmtDollar(r.orderingValue));
+  t('tbl-pri-b', fmtDollar(r.totalVolume)); t('tbl-pri-v', fmtDollar(r.smartPricingMargin));
+  t('tbl-aud-b', fmtDollar(state.invoiceHours * state.hourlyWage * 52 * state.numLocations)); t('tbl-aud-v', fmtDollar(r.invoiceLaborValue));
+  t('tbl-esh-b', fmtDollar(state.tagHours * state.hourlyWage * 52 * state.numLocations)); t('tbl-esh-v', fmtDollar(r.eShelfValue));
+  t('tbl-total', fmtDollar(r.totalValueAdded));
+}
+
+function fullRender() {
+  const r = calculate();
+  const name = state.companyName || 'Your Store';
+  const ac = 'rgba(155,138,251,0.4)';
+  const dc = 'var(--card-border)';
 
   app.innerHTML = `
-    <!-- Header -->
     <header class="header animate-in">
       <div class="logo-area">
         <div class="logo-mark">V</div>
-        <div>
-          <div class="logo-text"><span>Vori</span>OS</div>
-          <div class="header-subtitle">ROI Calculator</div>
-        </div>
+        <div><div class="logo-text"><span>Vori</span>OS</div><div class="header-subtitle">ROI Calculator</div></div>
       </div>
     </header>
-
-    <!-- Hero -->
     <div class="hero animate-in delay-1">
       <h1>See what <span class="green">Vori</span> can do<br>for your bottom line</h1>
       <p>Enter your store details below and watch the numbers come to life. Every percentage point matters in grocery.</p>
     </div>
-
-    <!-- Money Clock -->
     <div class="money-clock animate-in delay-2">
-      <div class="clock-label pulse">⏱ Money Left on the Table</div>
-      <div class="clock-value"><span class="dollar">$</span>${fmt(Math.round(r.dailyLost))}</div>
-      <div class="clock-sub">in unrealized profit <strong>every single day</strong> for ${name}</div>
+      <div class="clock-label pulse">\u23F1 Money Left on the Table</div>
+      <div class="clock-value" id="clock-daily"><span class="dollar">$</span>${fmt(Math.round(r.dailyLost))}</div>
+      <div class="clock-sub" id="clock-name">in unrealized profit <strong>every single day</strong> for ${name}</div>
       <div class="clock-row">
-        <div class="clock-stat">
-          <div class="clock-stat-value">${fmtDollar(r.monthlyLost)}</div>
-          <div class="clock-stat-label">Per Month</div>
-        </div>
-        <div class="clock-stat">
-          <div class="clock-stat-value">${fmtDollar(r.totalValueAdded)}</div>
-          <div class="clock-stat-label">Per Year</div>
-        </div>
+        <div class="clock-stat"><div class="clock-stat-value" id="clock-monthly">${fmtDollar(r.monthlyLost)}</div><div class="clock-stat-label">Per Month</div></div>
+        <div class="clock-stat"><div class="clock-stat-value" id="clock-yearly">${fmtDollar(r.totalValueAdded)}</div><div class="clock-stat-label">Per Year</div></div>
       </div>
     </div>
-
-    <!-- Section 1: Store Info -->
     <div class="section animate-in delay-3">
-      <div class="section-header">
-        <div class="section-num">1</div>
-        <div class="section-title">Store Information</div>
-      </div>
+      <div class="section-header"><div class="section-num">1</div><div class="section-title">Store Information</div></div>
       <div class="input-grid">
-        <div class="input-card">
-          <div class="input-label"><span class="icon">🏪</span> Company Name</div>
-          <input type="text" id="companyName" value="${state.companyName}" placeholder="e.g. Farewell Market" oninput="updateState('companyName', this.value)">
-        </div>
-        <div class="input-card">
-          <div class="input-label"><span class="icon">📍</span> Number of Locations</div>
-          <input type="number" id="numLocations" value="${state.numLocations}" min="1" max="500" oninput="updateState('numLocations', parseInt(this.value) || 1)">
-        </div>
-        <div class="input-card">
-          <div class="input-label"><span class="icon">💰</span> Avg. Annual Volume per Store</div>
-          <div class="input-wrapper">
-            <span class="input-prefix">$</span>
-            <input type="text" class="has-prefix" id="annualVolume" value="${fmt(state.annualVolume)}" oninput="updateDollar('annualVolume', this.value)">
-          </div>
-        </div>
-        <div class="input-card">
-          <div class="input-label"><span class="icon">🛒</span> Number of Lanes</div>
-          <input type="number" id="lanes" value="${state.lanes}" min="1" max="50" oninput="updateState('lanes', parseInt(this.value) || 1)">
-        </div>
-        <div class="input-card">
-          <div class="input-label"><span class="icon">👤</span> Avg. Hourly Wage</div>
-          <div class="input-wrapper">
-            <span class="input-prefix">$</span>
-            <input type="text" class="has-prefix has-suffix" id="hourlyWage" value="${state.hourlyWage}" oninput="updateState('hourlyWage', parseFloat(this.value) || 0)">
-            <span class="input-suffix">/hr</span>
-          </div>
-        </div>
-        <div class="input-card">
-          <div class="input-label"><span class="icon">🏷️</span> Desired # of E-Shelf Tags</div>
-          <input type="number" id="desiredTags" value="${state.desiredTags}" min="0" max="50000" step="500" oninput="updateState('desiredTags', parseInt(this.value) || 0)">
-        </div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83C\uDFEA</span> Company Name</div><input type="text" data-key="companyName" value="${state.companyName}" placeholder="e.g. Farewell Market"></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDCCD</span> Number of Locations</div><input type="number" data-key="numLocations" data-type="int" value="${state.numLocations}" min="1" max="500"></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDCB0</span> Avg. Annual Volume per Store</div><div class="input-wrapper"><span class="input-prefix">$</span><input type="text" class="has-prefix" data-key="annualVolume" data-type="dollar" value="${fmt(state.annualVolume)}"></div></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDED2</span> Number of Lanes</div><input type="number" data-key="lanes" data-type="int" value="${state.lanes}" min="1" max="50"></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDC64</span> Avg. Hourly Wage</div><div class="input-wrapper"><span class="input-prefix">$</span><input type="text" class="has-prefix has-suffix" data-key="hourlyWage" data-type="float" value="${state.hourlyWage}"><span class="input-suffix">/hr</span></div></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83C\uDFF7\uFE0F</span> Desired # of E-Shelf Tags</div><input type="number" data-key="desiredTags" data-type="int" value="${state.desiredTags}" min="0" max="50000" step="500"></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDCB3</span> Upfront Costs (Hardware & Install)</div><div class="input-wrapper"><span class="input-prefix">$</span><input type="text" class="has-prefix" data-key="upfrontCosts" data-type="dollar" value="${fmt(state.upfrontCosts)}"></div></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDCC4</span> Monthly Software Fee</div><div class="input-wrapper"><span class="input-prefix">$</span><input type="text" class="has-prefix has-suffix" data-key="monthlyFee" data-type="dollar" value="${fmt(state.monthlyFee)}"><span class="input-suffix">/mo</span></div><div class="benefit-desc" style="margin-top:6px" id="annual-fee-display">= ${fmtDollar(state.monthlyFee * 12 * state.numLocations)}/yr</div></div>
+        <div class="input-card"><div class="input-label"><span class="icon">\uD83D\uDD04</span> 0% Financing Option</div><div class="toggle-pills"><button class="toggle-pill ${state.financingTerm===0?'active':''}" data-financing="0">Pay Upfront</button><button class="toggle-pill ${state.financingTerm===24?'active':''}" data-financing="24">24 mo</button><button class="toggle-pill ${state.financingTerm===36?'active':''}" data-financing="36">36 mo</button><button class="toggle-pill ${state.financingTerm===48?'active':''}" data-financing="48">48 mo</button></div><div class="benefit-desc" style="margin-top:8px;${state.financingTerm>0?'':'display:none'}" id="financing-info">${(function(){if(state.financingTerm>0){const mp=r.monthlyFinancing+(state.monthlyFee*state.numLocations)+(state.eshelfTags?state.eShelfPerMonth*state.numLocations:0);const tc=mp*state.financingTerm;return fmtDollar(r.totalUpfront)+' financed over '+state.financingTerm+' months = <strong style="color:var(--vori-green)">'+fmtDollar(r.monthlyFinancing)+'/mo</strong><br>Total monthly payment (financing + software): <strong style="color:var(--vori-green)">'+fmtDollar(mp)+'/mo</strong><br>Total '+state.financingTerm+'-month contract cost: <strong style="color:var(--vori-green)">'+fmtDollar(tc)+'</strong>';}return '';})()}</div></div>
       </div>
     </div>
-
-    <!-- Section 2: Vori Modules -->
     <div class="section">
-      <div class="section-header">
-        <div class="section-num">2</div>
-        <div class="section-title">Vori Modules & Impact</div>
-      </div>
-
-      <!-- Module Cards -->
-      <div class="input-grid" style="margin-bottom: 20px;">
-        <!-- Loyalty -->
-        <div class="input-card" style="border-color: ${state.loyalty ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">❤️</span> Loyalty & Marketing</div>
-            <button class="toggle-pill ${state.loyalty ? 'active' : ''}" onclick="toggleModule('loyalty')">${state.loyalty ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Increased customer count, retention, basket size & walletshare</div>
-          ${state.loyalty ? `
-          <div class="slider-container">
-            <input type="range" min="1" max="10" step="0.5" value="${state.loyaltyImpact}" oninput="updateState('loyaltyImpact', parseFloat(this.value))">
-            <div class="slider-value">${state.loyaltyImpact}% of revenue → ${fmtDollar(r.loyaltyValue)}/yr</div>
-          </div>` : ''}
-        </div>
-
-        <!-- Inventory -->
-        <div class="input-card" style="border-color: ${state.inventory ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">📦</span> Inventory Management</div>
-            <button class="toggle-pill ${state.inventory ? 'active' : ''}" onclick="toggleModule('inventory')">${state.inventory ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Decreased shrink, reduced out-of-stocks, backdoor control</div>
-          ${state.inventory ? `
-          <div class="slider-container">
-            <input type="range" min="0.25" max="5" step="0.25" value="${state.inventoryImpact}" oninput="updateState('inventoryImpact', parseFloat(this.value))">
-            <div class="slider-value">${state.inventoryImpact}% of revenue → ${fmtDollar(r.inventoryValue)}/yr</div>
-          </div>` : ''}
-        </div>
-
-        <!-- Multi-vendor Ordering -->
-        <div class="input-card" style="border-color: ${state.ordering ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">📋</span> Multi-Vendor Ordering</div>
-            <button class="toggle-pill ${state.ordering ? 'active' : ''}" onclick="toggleModule('ordering')">${state.ordering ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Labor saved from writing orders across multiple platforms</div>
-          ${state.ordering ? `
-          <div class="slider-container">
-            <input type="range" min="1" max="20" step="1" value="${state.orderingHours}" oninput="updateState('orderingHours', parseFloat(this.value))">
-            <div class="slider-value">${state.orderingHours} hrs/wk saved → ${fmtDollar(r.orderingValue)}/yr</div>
-          </div>` : ''}
-        </div>
-
-        <!-- Smart Pricing - Margin -->
-        <div class="input-card" style="border-color: ${state.smartPricing ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">🎯</span> Smart Pricing (Margin)</div>
-            <button class="toggle-pill ${state.smartPricing ? 'active' : ''}" onclick="toggleModule('smartPricing')">${state.smartPricing ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Ensure cost changes don't erode your target retail margin</div>
-          ${state.smartPricing ? `
-          <div class="slider-container">
-            <input type="range" min="0.25" max="5" step="0.25" value="${state.smartPricingImpact}" oninput="updateState('smartPricingImpact', parseFloat(this.value))">
-            <div class="slider-value">${state.smartPricingImpact}% of revenue → ${fmtDollar(r.smartPricingMargin)}/yr</div>
-          </div>` : ''}
-        </div>
-
-        <!-- Smart Pricing - Invoice Audit -->
-        <div class="input-card" style="border-color: ${state.invoiceAudit ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">🔍</span> Invoice Audit (Labor)</div>
-            <button class="toggle-pill ${state.invoiceAudit ? 'active' : ''}" onclick="toggleModule('invoiceAudit')">${state.invoiceAudit ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Labor saved from manually auditing invoices</div>
-          ${state.invoiceAudit ? `
-          <div class="slider-container">
-            <input type="range" min="1" max="20" step="1" value="${state.invoiceHours}" oninput="updateState('invoiceHours', parseFloat(this.value))">
-            <div class="slider-value">${state.invoiceHours} hrs/wk saved → ${fmtDollar(r.invoiceLaborValue)}/yr</div>
-          </div>` : ''}
-        </div>
-
-        <!-- E-Shelf Tags -->
-        <div class="input-card" style="border-color: ${state.eshelfTags ? 'rgba(124,58,237,0.4)' : 'var(--card-border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div class="input-label" style="margin:0"><span class="icon">🏷️</span> E-Shelf Tags</div>
-            <button class="toggle-pill ${state.eshelfTags ? 'active' : ''}" onclick="toggleModule('eshelfTags')">${state.eshelfTags ? 'ON' : 'OFF'}</button>
-          </div>
-          <div class="benefit-desc">Eliminate overtime labor for paper price tag updates</div>
-          ${state.eshelfTags ? `
-          <div class="slider-container">
-            <input type="range" min="1" max="10" step="1" value="${state.tagHours}" oninput="updateState('tagHours', parseFloat(this.value))">
-            <div class="slider-value">${state.tagHours} hrs/wk saved → ${fmtDollar(r.eShelfValue)}/yr</div>
-          </div>` : ''}
-        </div>
+      <div class="section-header"><div class="section-num">2</div><div class="section-title">Vori Modules & Impact</div></div>
+      <div class="input-grid" style="margin-bottom:20px">
+        <div class="input-card" style="border-color:${state.loyalty?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\u2764\uFE0F</span> Loyalty & Marketing</div><button class="toggle-pill ${state.loyalty?'active':''}" data-module="loyalty">${state.loyalty?'ON':'OFF'}</button></div><div class="benefit-desc">Increased customer count, retention, basket size & walletshare</div>${state.loyalty?'<div class="slider-container"><input type="range" min="1" max="10" step="0.5" data-key="loyaltyImpact" data-type="float" value="'+state.loyaltyImpact+'"><div class="slider-value" id="loyalty-sv">'+state.loyaltyImpact+'% of revenue \u2192 '+fmtDollar(r.loyaltyValue)+'/yr</div></div>':''}</div>
+        <div class="input-card" style="border-color:${state.inventory?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\uD83D\uDCE6</span> Inventory Management</div><button class="toggle-pill ${state.inventory?'active':''}" data-module="inventory">${state.inventory?'ON':'OFF'}</button></div><div class="benefit-desc">Decreased shrink, reduced out-of-stocks, backdoor control</div>${state.inventory?'<div class="slider-container"><input type="range" min="0.25" max="5" step="0.25" data-key="inventoryImpact" data-type="float" value="'+state.inventoryImpact+'"><div class="slider-value" id="inventory-sv">'+state.inventoryImpact+'% of revenue \u2192 '+fmtDollar(r.inventoryValue)+'/yr</div></div>':''}</div>
+        <div class="input-card" style="border-color:${state.ordering?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\uD83D\uDCCB</span> Multi-Vendor Ordering</div><button class="toggle-pill ${state.ordering?'active':''}" data-module="ordering">${state.ordering?'ON':'OFF'}</button></div><div class="benefit-desc">Labor saved from writing orders across multiple platforms</div>${state.ordering?'<div class="slider-container"><input type="range" min="1" max="20" step="1" data-key="orderingHours" data-type="float" value="'+state.orderingHours+'"><div class="slider-value" id="ordering-sv">'+state.orderingHours+' hrs/wk saved \u2192 '+fmtDollar(r.orderingValue)+'/yr</div></div>':''}</div>
+        <div class="input-card" style="border-color:${state.smartPricing?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\uD83C\uDFAF</span> Smart Pricing (Margin)</div><button class="toggle-pill ${state.smartPricing?'active':''}" data-module="smartPricing">${state.smartPricing?'ON':'OFF'}</button></div><div class="benefit-desc">Ensure cost changes don't erode your target retail margin</div>${state.smartPricing?'<div class="slider-container"><input type="range" min="0.25" max="5" step="0.25" data-key="smartPricingImpact" data-type="float" value="'+state.smartPricingImpact+'"><div class="slider-value" id="smartpricing-sv">'+state.smartPricingImpact+'% of revenue \u2192 '+fmtDollar(r.smartPricingMargin)+'/yr</div></div>':''}</div>
+        <div class="input-card" style="border-color:${state.invoiceAudit?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\uD83D\uDD0D</span> Invoice Audit (Labor)</div><button class="toggle-pill ${state.invoiceAudit?'active':''}" data-module="invoiceAudit">${state.invoiceAudit?'ON':'OFF'}</button></div><div class="benefit-desc">Labor saved from manually auditing invoices</div>${state.invoiceAudit?'<div class="slider-container"><input type="range" min="1" max="20" step="1" data-key="invoiceHours" data-type="float" value="'+state.invoiceHours+'"><div class="slider-value" id="invoice-sv">'+state.invoiceHours+' hrs/wk saved \u2192 '+fmtDollar(r.invoiceLaborValue)+'/yr</div></div>':''}</div>
+        <div class="input-card" style="border-color:${state.eshelfTags?ac:dc}"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="input-label" style="margin:0"><span class="icon">\uD83C\uDFF7\uFE0F</span> E-Shelf Tags</div><button class="toggle-pill ${state.eshelfTags?'active':''}" data-module="eshelfTags">${state.eshelfTags?'ON':'OFF'}</button></div><div class="benefit-desc">Eliminate overtime labor for paper price tag updates</div>${state.eshelfTags?'<div class="slider-container"><input type="range" min="1" max="10" step="1" data-key="tagHours" data-type="float" value="'+state.tagHours+'"><div class="slider-value" id="eshelf-sv">'+state.tagHours+' hrs/wk saved \u2192 '+fmtDollar(r.eShelfValue)+'/yr</div></div>':''}</div>
       </div>
     </div>
-
     <div class="divider"></div>
-
-    <!-- Section 3: Results -->
     <div class="section">
-      <div class="section-header">
-        <div class="section-num">3</div>
-        <div class="section-title">Your ROI Breakdown</div>
+      <div class="section-header"><div class="section-num">3</div><div class="section-title">Your ROI Breakdown</div></div>
+      <div class="results-grid" style="margin-bottom:24px">
+        <div class="result-card featured"><div class="result-icon">\uD83D\uDCB5</div><div class="result-value green" id="res-total-value">${fmtDollar(r.totalValueAdded)}</div><div class="result-label">Total Annual Value Added</div></div>
+        <div class="result-card"><div class="result-icon">\uD83D\uDCC8</div><div class="result-value cyan" id="res-profit-growth">${r.profitGrowthPct.toFixed(1)}%</div><div class="result-label">Profit Growth</div></div>
+        <div class="result-card featured"><div class="result-icon">\uD83D\uDE80</div><div class="result-value green" id="res-year1">${fmtDollar(r.netReturnYear1)}</div><div class="result-label">Net Return \u2014 Year 1</div></div>
+        <div class="result-card featured"><div class="result-icon">\uD83D\uDCCA</div><div class="result-value green" id="res-year2">${fmtDollar(r.netReturnYear2)}</div><div class="result-label">Net Return \u2014 Year 2+</div></div>
+        <div class="result-card"><div class="result-icon">\u23F1</div><div class="result-value gold" id="res-payback">${r.paybackMonths<1?'<1':r.paybackMonths.toFixed(1)}</div><div class="result-label">Payback Period (Months)</div></div>
       </div>
-
-      <div class="results-grid" style="margin-bottom: 24px;">
-        <div class="result-card featured">
-          <div class="result-icon">💵</div>
-          <div class="result-value green">${fmtDollar(r.totalValueAdded)}</div>
-          <div class="result-label">Total Annual Value Added</div>
-        </div>
-        <div class="result-card">
-          <div class="result-icon">📈</div>
-          <div class="result-value cyan">${r.profitGrowthPct.toFixed(1)}%</div>
-          <div class="result-label">Profit Growth</div>
-        </div>
-        <div class="result-card">
-          <div class="result-icon">🚀</div>
-          <div class="result-value green">${fmtDollar(r.netAnnualReturn)}</div>
-          <div class="result-label">Net Annual Return</div>
-        </div>
-        <div class="result-card">
-          <div class="result-icon">⏱</div>
-          <div class="result-value gold">${r.paybackMonths < 1 ? '<1' : r.paybackMonths.toFixed(1)}</div>
-          <div class="result-label">Payback Period (Months)</div>
-        </div>
-      </div>
-
-      <!-- Detailed Breakdown Table -->
       <table class="breakdown-table">
-        <thead>
-          <tr>
-            <th>Vori Module</th>
-            <th>Benefit</th>
-            <th>Basis</th>
-            <th>Est. Annual Value</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Vori Module</th><th>Benefit</th><th>Basis</th><th>Est. Annual Value</th></tr></thead>
         <tbody>
-          ${state.loyalty ? `<tr class="major"><td><span class="module-tag">Loyalty</span><br>Loyalty & Marketing</td><td class="benefit-desc">Increased customer count, retention, basket size</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.loyaltyValue)}</td></tr>` : ''}
-          ${state.inventory ? `<tr class="major"><td><span class="module-tag">Inventory</span><br>Inventory Management</td><td class="benefit-desc">Decreased shrink, reduced out-of-stocks</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.inventoryValue)}</td></tr>` : ''}
-          ${state.ordering ? `<tr><td><span class="module-tag">Ordering</span><br>Multi-Vendor Ordering</td><td class="benefit-desc">Labor savings across platforms</td><td>${fmtDollar(state.orderingHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.orderingValue)}</td></tr>` : ''}
-          ${state.smartPricing ? `<tr class="major"><td><span class="module-tag">Pricing</span><br>Smart Pricing – Margin</td><td class="benefit-desc">Cost changes don't erode target margin</td><td>${fmtDollar(r.totalVolume)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.smartPricingMargin)}</td></tr>` : ''}
-          ${state.invoiceAudit ? `<tr><td><span class="module-tag">Pricing</span><br>Smart Pricing – Invoice Audit</td><td class="benefit-desc">Eliminate manual invoice reconciliation</td><td>${fmtDollar(state.invoiceHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.invoiceLaborValue)}</td></tr>` : ''}
-          ${state.eshelfTags ? `<tr><td><span class="module-tag">E-Shelf</span><br>Electronic Shelf Tags</td><td class="benefit-desc">Eliminate paper tag update labor</td><td>${fmtDollar(state.tagHours * state.hourlyWage * 52 * state.numLocations)}</td><td style="color:var(--vori-green);font-weight:700">${fmtDollar(r.eShelfValue)}</td></tr>` : ''}
+          ${state.loyalty?'<tr class="major"><td><span class="module-tag">Loyalty</span><br>Loyalty & Marketing</td><td class="benefit-desc">Increased customer count, retention, basket size</td><td id="tbl-loy-b">'+fmtDollar(r.totalVolume)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-loy-v">'+fmtDollar(r.loyaltyValue)+'</td></tr>':''}
+          ${state.inventory?'<tr class="major"><td><span class="module-tag">Inventory</span><br>Inventory Management</td><td class="benefit-desc">Decreased shrink, reduced out-of-stocks</td><td id="tbl-inv-b">'+fmtDollar(r.totalVolume)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-inv-v">'+fmtDollar(r.inventoryValue)+'</td></tr>':''}
+          ${state.ordering?'<tr><td><span class="module-tag">Ordering</span><br>Multi-Vendor Ordering</td><td class="benefit-desc">Labor savings across platforms</td><td id="tbl-ord-b">'+fmtDollar(state.orderingHours*state.hourlyWage*52*state.numLocations)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-ord-v">'+fmtDollar(r.orderingValue)+'</td></tr>':''}
+          ${state.smartPricing?'<tr class="major"><td><span class="module-tag">Pricing</span><br>Smart Pricing \u2013 Margin</td><td class="benefit-desc">Cost changes don\'t erode target margin</td><td id="tbl-pri-b">'+fmtDollar(r.totalVolume)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-pri-v">'+fmtDollar(r.smartPricingMargin)+'</td></tr>':''}
+          ${state.invoiceAudit?'<tr><td><span class="module-tag">Pricing</span><br>Smart Pricing \u2013 Invoice Audit</td><td class="benefit-desc">Eliminate manual invoice reconciliation</td><td id="tbl-aud-b">'+fmtDollar(state.invoiceHours*state.hourlyWage*52*state.numLocations)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-aud-v">'+fmtDollar(r.invoiceLaborValue)+'</td></tr>':''}
+          ${state.eshelfTags?'<tr><td><span class="module-tag">E-Shelf</span><br>Electronic Shelf Tags</td><td class="benefit-desc">Eliminate paper tag update labor</td><td id="tbl-esh-b">'+fmtDollar(state.tagHours*state.hourlyWage*52*state.numLocations)+'</td><td style="color:var(--vori-green);font-weight:700" id="tbl-esh-v">'+fmtDollar(r.eShelfValue)+'</td></tr>':''}
         </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3">Total Annual Value</td>
-            <td>${fmtDollar(r.totalValueAdded)}</td>
-          </tr>
-        </tfoot>
+        <tfoot><tr><td colspan="3">Total Annual Value</td><td id="tbl-total">${fmtDollar(r.totalValueAdded)}</td></tr></tfoot>
       </table>
     </div>
-
-    <!-- CTA -->
-    <div class="cta-bar">
-      <a href="https://www.vori.com" target="_blank" class="cta-btn">
-        Get Started with Vori →
-      </a>
-    </div>
-
-    <div class="footer">
-      <p>Built with 💜 by <a href="https://www.vori.com" target="_blank">Vori</a> · The grocery operating system</p>
-    </div>
+    <div class="cta-bar"><a href="https://www.vori.com" target="_blank" class="cta-btn">Get Started with Vori \u2192</a></div>
+    <div class="footer"><p>Built with \uD83D\uDC9C by <a href="https://www.vori.com" target="_blank">Vori</a> \u00B7 The grocery operating system</p></div>
   `;
+  attachListeners();
 }
 
-function renderComparisonBars() {
-  const competitors = [
-    { name: 'Vori', annual: 24500, isVori: true },
-    { name: 'PC America', annual: 52412 },
-    { name: 'NCR ISS45', annual: 60565 },
-    { name: 'IT Retail', annual: 67492 },
-    { name: 'DUMAC', annual: 68079 },
-    { name: 'LOC', annual: 69145 },
-    { name: 'NCR Encor', annual: 80412 },
-    { name: 'ECRS', annual: 86426 },
-    { name: 'Revel', annual: 87145 },
-  ];
-
-  const max = Math.max(...competitors.map(c => c.annual));
-
-  return competitors.map(c => {
-    const pct = (c.annual / max * 100).toFixed(0);
-    return `
-      <div class="compare-bar">
-        <div class="compare-name" style="${c.isVori ? 'color:var(--vori-green);font-weight:700' : ''}">${c.name}</div>
-        <div class="compare-track">
-          <div class="compare-fill ${c.isVori ? 'vori' : 'other'}" style="width:${pct}%">
-            ${fmtDollar(c.annual)}/yr
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
+function attachListeners() {
+  app.querySelectorAll('[data-key]').forEach(function(el) {
+    var key = el.dataset.key;
+    var type = el.dataset.type || 'text';
+    el.addEventListener('input', function() {
+      if (type === 'dollar') { state[key] = parseInt(el.value.replace(/[^0-9]/g, '')) || 0; }
+      else if (type === 'int') { state[key] = parseInt(el.value) || 0; }
+      else if (type === 'float') { state[key] = parseFloat(el.value) || 0; }
+      else { state[key] = el.value; }
+      updateOutputs();
+    });
+    if (type === 'dollar') {
+      el.addEventListener('blur', function() { el.value = fmt(state[key]); });
+    }
+  });
+  app.querySelectorAll('[data-module]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      state[btn.dataset.module] = !state[btn.dataset.module];
+      fullRender();
+    });
+  });
+  app.querySelectorAll('[data-financing]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      state.financingTerm = parseInt(btn.dataset.financing);
+      app.querySelectorAll('[data-financing]').forEach(function(b) {
+        b.classList.toggle('active', parseInt(b.dataset.financing) === state.financingTerm);
+      });
+      updateOutputs();
+    });
+  });
 }
 
-function updateState(key, value) {
-  state[key] = value;
-  render();
-  // Restore focus
-  const el = document.getElementById(key);
-  if (el) el.focus();
-}
-
-function updateDollar(key, rawValue) {
-  const num = parseInt(rawValue.replace(/[^0-9]/g, '')) || 0;
-  state[key] = num;
-  render();
-  const el = document.getElementById(key);
-  if (el) {
-    el.focus();
-    // Set cursor to end
-    const len = el.value.length;
-    el.setSelectionRange(len, len);
-  }
-}
-
-function toggleModule(key) {
-  state[key] = !state[key];
-  render();
-}
-
-// Initial render
-render();
+fullRender();
 </script>
 </body>
 </html>
